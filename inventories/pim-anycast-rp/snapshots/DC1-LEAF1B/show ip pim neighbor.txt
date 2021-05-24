@@ -1,0 +1,4 @@
+PIM Neighbor Table for default VRF
+Neighbor Address  Interface  Uptime    Expires   Mode    Transport  
+172.31.255.4      Ethernet1  20:41:21  00:01:40  sparse  datagram   
+172.31.255.6      Ethernet2  03:52:29  00:01:24  sparse  datagram

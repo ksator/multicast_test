@@ -1,0 +1,7 @@
+Neighbor address: 172.31.255.2
+ Via interface: Ethernet2 (172.31.255.3)
+  Group: 226.200.200.200
+    Joins:
+      10.100.100.2/32 SPT
+    Prunes:
+      No prunes included

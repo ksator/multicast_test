@@ -1,0 +1,19 @@
+Last table change time   : 3:51:28 ago
+Number of table inserts  : 17
+Number of table deletes  : 6
+Number of table drops    : 0
+Number of table age-outs : 0
+
+Port          Neighbor Device ID            Neighbor Port ID    TTL 
+---------- ----------------------------- ---------------------- --- 
+Et1           DC1-LEAF1A.arista.com         Ethernet2           120 
+Et2           DC1-LEAF1B.arista.com         Ethernet2           120 
+Et4           DC1-LEAF2A.arista.com         Ethernet2           120 
+Et5           DC1-LEAF2B.arista.com         Ethernet2           120 
+Ma1           DC1-LEAF2A.arista.com         Management1         120 
+Ma1           DC1-LEAF2B.arista.com         Management1         120 
+Ma1           DC1-LEAF1B.arista.com         Management1         120 
+Ma1           DC1-LEAF1A.arista.com         Management1         120 
+Ma1           DC1-L2LEAF1A.arista.com       Management1         120 
+Ma1           DC1-L2LEAF2A.arista.com       Management1         120 
+Ma1           DC1-SPINE1.arista.com         Management1         120

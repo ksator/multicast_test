@@ -1,0 +1,11 @@
+Port       Name                             Status       Vlan     Duplex Speed  Type            Flags Encapsulation
+Et1        P2P_LINK_TO_DC1-SPINE1_Ethernet4 connected    routed   full   unconf EbraTestPhyPort                    
+Et2        P2P_LINK_TO_DC1-SPINE2_Ethernet4 connected    routed   full   unconf EbraTestPhyPort                    
+Et3                                         connected    1        full   unconf EbraTestPhyPort                    
+Et4                                         connected    1        full   unconf EbraTestPhyPort                    
+Et5        server02_Eth0                    connected    trunk    full   unconf EbraTestPhyPort                    
+Et6                                         connected    1        full   unconf EbraTestPhyPort                    
+Et7        MLAG_PEER_DC1-LEAF2B_Ethernet7   connected    in Po7   full   unconf EbraTestPhyPort                    
+Et8        MLAG_PEER_DC1-LEAF2B_Ethernet8   connected    in Po7   full   unconf EbraTestPhyPort                    
+Ma1        oob_management                   connected    routed   a-full a-1G   10/100/1000                        
+Po7        MLAG_PEER_DC1-LEAF2B_Po7         connected    trunk    full   unconf N/A

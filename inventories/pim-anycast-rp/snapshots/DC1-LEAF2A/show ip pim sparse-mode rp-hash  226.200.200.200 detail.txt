@@ -1,0 +1,5 @@
+RP 192.168.253.1
+  PIM v2 Hash Values:
+  RP: 192.168.253.1
+    Uptime: 20:44:14, Expires: never, Priority: 0, HashMaskLen: 30, HashMaskValue: 231766297, Override: False
+Hash Algorithm: Default

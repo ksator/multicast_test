@@ -1,0 +1,32 @@
+---
+
+fabric_name: DC1_FABRIC
+
+output_format:
+  - text
+  # - markdown
+  # - json
+  # - yaml
+commands_list:
+  - show lldp neighbors
+  - show ip interface brief
+  - show interfaces status
+  - show version
+  - show ip route ospf
+  - show running-config
+  - show bgp evpn summary
+  - show vrf
+  - show ip igmp membership
+  - show igmp snooping querier status
+  - show ip pim interface
+  - show ip pim neighbor
+  - show ip pim rp
+  - show ip pim anycast-rp
+  - show ip pim protocol counters detail
+  - show ip pim sparse-mode rp-hash  226.200.200.200 detail
+  - show ip pim sparse-mode upstream joins
+  - show ip mroute
+  - show running-config section pim
+
+
+

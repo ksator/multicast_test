@@ -1,0 +1,9 @@
+Maximum number of vrfs allowed: 1024
+VRF       RD          Protocols   State                   Interfaces            
+-------- ----------- ----------- ------------------------ --------------------- 
+MGMT      <not set>   ipv4,ipv6   v4:no routing,          Management1           
+                                  v6:no routing                                 
+                                                                                
+default   <not set>   ipv4,ipv6   v4:routing; multicast,  Ethernet1, Ethernet2, 
+                                  v6:no routing           Ethernet4, Ethernet5, 
+                                                          Loopback0

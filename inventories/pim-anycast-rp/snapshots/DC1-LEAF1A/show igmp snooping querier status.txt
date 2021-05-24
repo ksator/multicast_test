@@ -1,0 +1,28 @@
+Global IGMP Querier status
+-------------------------------------------------------
+admin state                      : Disabled
+source IP address                : 0.0.0.0
+query-interval (sec)             : 125.0
+max-response-time (sec)          : 10.0
+querier timeout (sec)            : 255.0
+last-member-query-interval (sec) : 1.0
+last-member-query-count          : 2 (robustness)
+startup-query-interval (sec)     : 31.25 (query-interval/4)
+startup-query-count              : 2 (robustness)
+
+Vlan Admin    IP              Query    Response Querier Operational Ver
+     State                    Interval Time     Timeout State
+-----------------------------------------------------------------------
+1    Disabled 0.0.0.0         125.0    10.0     255.0   Non-Querier v2
+90   Disabled 0.0.0.0         125.0    10.0     255.0   Non-Querier v2
+110  Disabled 0.0.0.0         125.0    10.0     255.0   Non-Querier v2
+111  Disabled 0.0.0.0         125.0    10.0     255.0   Non-Querier v2
+112  Disabled 0.0.0.0         125.0    10.0     255.0   Non-Querier v2
+120  Disabled 0.0.0.0         125.0    10.0     255.0   Non-Querier v2
+121  Disabled 0.0.0.0         125.0    10.0     255.0   Non-Querier v2
+160  Disabled 0.0.0.0         125.0    10.0     255.0   Non-Querier v2
+210  Disabled 0.0.0.0         125.0    10.0     255.0   Non-Querier v2
+211  Disabled 0.0.0.0         125.0    10.0     255.0   Non-Querier v2
+250  Disabled 0.0.0.0         125.0    10.0     255.0   Non-Querier v2
+4093 Disabled 0.0.0.0         125.0    10.0     255.0   Non-Querier v2
+4094 Disabled 0.0.0.0         125.0    10.0     255.0   Non-Querier v2

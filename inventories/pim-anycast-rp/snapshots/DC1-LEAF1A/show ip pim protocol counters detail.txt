@@ -1,0 +1,20 @@
+PIM Control Counters
+                         Received     Rx Error  Rx Filtered         Sent     Tx Error  Tx Filtered
+Assert                          0            0            0            0            0            0
+Bootstrap Router                0            0            0            0            0            0
+CRP Advertisement               0            0            0            0            0            0
+DF Election                     0            0            0            0            0            0
+  Backoff                       0            0            0            0            0            0
+  Offer                         0            0            0            0            0            0
+  Pass                          0            0            0            0            0            0
+  Winner                        0            0            0            0            0            0
+Graft                           0            0            0            0            0            0
+Graft Ack                       0            0            0            0            0            0
+Hello                        3097            0            0         5473            1            0
+Join/Prune                      2            0            0          287            0            0
+  Datagram                      2            0            0          287            0            0
+  SCTP                          0            0            0            0            0            0
+Register                      293            0            0            0            0            0
+  Data Register               190            0            0            0            0            0
+  Null Register               103            0            0            0            0            0
+Register Stop                   0            0            0          205            0            0

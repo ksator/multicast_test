@@ -1,0 +1,33 @@
+Maximum number of vrfs allowed: 1024
+ VRF                  RD                  Protocols    State                    
+-------------------- ------------------- ------------ ------------------------- 
+ MGMT                 <not set>           ipv4,ipv6    v4:no routing,           
+                                                       v6:no routing            
+                                                                                
+ Tenant_A_APP_Zone    192.168.255.6:10    ipv4,ipv6    v4:routing,              
+                                                       v6:no routing            
+                                                                                
+ Tenant_A_WEB_Zone    192.168.255.6:11    ipv4,ipv6    v4:routing,              
+                                                       v6:no routing            
+                                                                                
+ Tenant_B_APP_Zone    192.168.255.6:20    ipv4,ipv6    v4:routing,              
+                                                       v6:no routing            
+                                                                                
+ Tenant_B_WAN_Zone    192.168.255.6:21    ipv4,ipv6    v4:routing,              
+                                                       v6:no routing            
+                                                                                
+ default              <not set>           ipv4,ipv6    v4:routing; multicast,   
+                                                       v6:no routing            
+                                                                                
+
+Interfaces                    
+----------------------------- 
+Management1                   
+Vlan110, Vlan111, Vlan112,    
+Vlan1196                      
+Vlan1198, Vlan120, Vlan121    
+Vlan1199, Vlan210, Vlan211    
+Vlan1197, Vlan250             
+Ethernet1, Ethernet2,         
+Loopback0, Loopback1,         
+Loopback2, Vlan4093, Vlan4094

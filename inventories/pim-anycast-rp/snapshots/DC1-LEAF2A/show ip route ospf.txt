@@ -1,0 +1,33 @@
+VRF: default
+Codes: C - connected, S - static, K - kernel, 
+       O - OSPF, IA - OSPF inter area, E1 - OSPF external type 1,
+       E2 - OSPF external type 2, N1 - OSPF NSSA external type 1,
+       N2 - OSPF NSSA external type2, B - BGP, B I - iBGP, B E - eBGP,
+       R - RIP, I L1 - IS-IS level 1, I L2 - IS-IS level 2,
+       O3 - OSPFv3, A B - BGP Aggregate, A O - OSPF Summary,
+       NG - Nexthop Group Static Route, V - VXLAN Control Service,
+       DH - DHCP client installed default route, M - Martian,
+       DP - Dynamic Policy Route, L - VRF Leaked,
+       RC - Route Cache Route
+
+ O        10.90.90.0/24 [110/30] via 172.31.255.8, Ethernet1
+                                 via 172.31.255.10, Ethernet2
+ O        10.100.100.0/24 [110/30] via 172.31.255.8, Ethernet1
+                                   via 172.31.255.10, Ethernet2
+ O        172.31.255.0/31 [110/20] via 172.31.255.8, Ethernet1
+ O        172.31.255.2/31 [110/20] via 172.31.255.10, Ethernet2
+ O        172.31.255.4/31 [110/20] via 172.31.255.8, Ethernet1
+ O        172.31.255.6/31 [110/20] via 172.31.255.10, Ethernet2
+ O        172.31.255.12/31 [110/20] via 172.31.255.8, Ethernet1
+                                    via 10.255.254.5, Vlan4093
+ O        172.31.255.14/31 [110/20] via 172.31.255.10, Ethernet2
+                                    via 10.255.254.5, Vlan4093
+ O        192.168.254.3/32 [110/30] via 172.31.255.8, Ethernet1
+                                    via 172.31.255.10, Ethernet2
+ O        192.168.255.1/32 [110/20] via 172.31.255.8, Ethernet1
+ O        192.168.255.2/32 [110/20] via 172.31.255.10, Ethernet2
+ O        192.168.255.3/32 [110/30] via 172.31.255.8, Ethernet1
+                                    via 172.31.255.10, Ethernet2
+ O        192.168.255.4/32 [110/30] via 172.31.255.8, Ethernet1
+                                    via 172.31.255.10, Ethernet2
+ O        192.168.255.6/32 [110/20] via 10.255.254.5, Vlan4093

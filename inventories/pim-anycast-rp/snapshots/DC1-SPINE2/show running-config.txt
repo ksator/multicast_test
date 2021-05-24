@@ -1,0 +1,145 @@
+! Command: show running-config
+! device: DC1-SPINE2 (vEOS, EOS-4.24.0F)
+!
+! boot system flash:/vEOS-lab.swi
+!
+vlan internal order ascending range 1006 1199
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname DC1-SPINE2
+ip name-server vrf MGMT 1.1.1.1
+ip name-server vrf MGMT 8.8.8.8
+dns domain arista.com
+!
+ntp local-interface vrf MGMT Management1
+ntp server vrf MGMT 3.fr.pool.ntp.org
+ntp server vrf MGMT fr.pool.ntp.org prefer
+!
+spanning-tree mode none
+!
+no aaa root
+!
+username admin privilege 15 role network-admin nopassword
+username ansible privilege 15 role network-admin secret sha512 $6$ZBSkmURyhpIhPy7d$RW8hQw6Y2/1BcwQb5AtqgCJuIObEIMSHXCyXkwkwFqMVk5dLtZthTwYzbQkUUJw7RtowABRjAIH1Mysjl5YOm1
+!
+vrf instance MGMT
+!
+interface Ethernet1
+   description P2P_LINK_TO_DC1-LEAF1A_Ethernet2
+   no switchport
+   ip address 172.31.255.2/31
+   ip ospf dead-interval 8
+   ip ospf hello-interval 2
+   ip ospf network point-to-point
+   ip ospf authentication message-digest
+   ip ospf area 0.0.0.0
+   ip ospf message-digest-key 1 md5 7 lOEmsIwEM8EUA97ure0gCA==
+   pim ipv4 sparse-mode
+!
+interface Ethernet2
+   description P2P_LINK_TO_DC1-LEAF1B_Ethernet2
+   no switchport
+   ip address 172.31.255.6/31
+   ip ospf dead-interval 8
+   ip ospf hello-interval 2
+   ip ospf network point-to-point
+   ip ospf authentication message-digest
+   ip ospf area 0.0.0.0
+   ip ospf message-digest-key 1 md5 7 gwbpeQNlDQr9lCY7YEU/vg==
+   pim ipv4 sparse-mode
+!
+interface Ethernet3
+!
+interface Ethernet4
+   description P2P_LINK_TO_DC1-LEAF2A_Ethernet2
+   no switchport
+   ip address 172.31.255.10/31
+   ip ospf dead-interval 8
+   ip ospf hello-interval 2
+   ip ospf network point-to-point
+   ip ospf authentication message-digest
+   ip ospf area 0.0.0.0
+   ip ospf message-digest-key 1 md5 7 7+cINEEGHhuN0P0T0L7t7Q==
+   pim ipv4 sparse-mode
+!
+interface Ethernet5
+   description P2P_LINK_TO_DC1-LEAF2B_Ethernet2
+   no switchport
+   ip address 172.31.255.14/31
+   ip ospf dead-interval 8
+   ip ospf hello-interval 2
+   ip ospf network point-to-point
+   ip ospf authentication message-digest
+   ip ospf area 0.0.0.0
+   ip ospf message-digest-key 1 md5 7 7+cINEEGHhuN0P0T0L7t7Q==
+   pim ipv4 sparse-mode
+!
+interface Ethernet6
+!
+interface Ethernet7
+!
+interface Ethernet8
+!
+interface Loopback0
+   description EVPN_Overlay_Peering
+   ip address 192.168.255.2/32
+   ip ospf area 0.0.0.0
+!
+interface Management1
+   description oob_management
+   vrf MGMT
+   ip address 10.73.1.102/24
+!
+ip routing
+no ip routing vrf MGMT
+!
+ip route vrf MGMT 0.0.0.0/0 10.73.1.1
+!
+router bfd
+   interval 150 min-rx 150 multiplier 3 default
+!
+router bgp 65000
+   router-id 192.168.255.2
+   no bgp default ipv4-unicast
+   distance bgp 20 200 200
+   bgp cluster-id 192.168.255.2
+   neighbor RR_CLIENT_EVPN peer group
+   neighbor RR_CLIENT_EVPN remote-as 65000
+   neighbor RR_CLIENT_EVPN update-source Loopback0
+   neighbor RR_CLIENT_EVPN route-reflector-client
+   neighbor RR_CLIENT_EVPN password 7 o85EhzE1PBPkJ8n3ARI+bw==
+   neighbor RR_CLIENT_EVPN send-community
+   neighbor RR_CLIENT_EVPN maximum-routes 0
+   neighbor 192.168.255.3 peer group RR_CLIENT_EVPN
+   neighbor 192.168.255.4 peer group RR_CLIENT_EVPN
+   neighbor 192.168.255.5 peer group RR_CLIENT_EVPN
+   neighbor 192.168.255.6 peer group RR_CLIENT_EVPN
+   !
+   address-family evpn
+      neighbor RR_CLIENT_EVPN activate
+!
+router multicast
+   ipv4
+      routing
+!
+router ospf 1
+   router-id 192.168.255.2
+   auto-cost reference-bandwidth 1000000
+   passive-interface Loopback0
+   max-lsa 12000
+   maximum-paths 2
+!
+router pim sparse-mode
+   ipv4
+      rp address 192.168.253.1
+!
+management api http-commands
+   no shutdown
+   !
+   vrf MGMT
+      no shutdown
+!
+end

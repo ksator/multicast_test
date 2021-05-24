@@ -1,0 +1,37 @@
+interface Ethernet1
+   description P2P_LINK_TO_DC1-SPINE1_Ethernet1
+   no switchport
+   ip address 172.31.255.1/31
+   ip ospf dead-interval 8
+   ip ospf hello-interval 2
+   ip ospf network point-to-point
+   ip ospf authentication message-digest
+   ip ospf area 0.0.0.0
+   ip ospf message-digest-key 1 md5 7 lOEmsIwEM8EUA97ure0gCA==
+   pim ipv4 sparse-mode
+!
+interface Ethernet2
+   description P2P_LINK_TO_DC1-SPINE2_Ethernet1
+   no switchport
+   ip address 172.31.255.3/31
+   bfd echo
+   ip ospf dead-interval 8
+   ip ospf hello-interval 2
+   ip ospf network point-to-point
+   ip ospf authentication message-digest
+   ip ospf area 0.0.0.0
+   ip ospf message-digest-key 1 md5 7 gwbpeQNlDQr9lCY7YEU/vg==
+   pim ipv4 sparse-mode
+!
+interface Vlan90
+   ip address 10.90.90.1/24
+   ip ospf area 0.0.0.0
+   pim ipv4 sparse-mode
+!
+router pim sparse-mode
+   ipv4
+      rp address 192.168.253.1
+      anycast-rp 192.168.253.1 192.168.255.3
+      anycast-rp 192.168.253.1 192.168.255.4
+      anycast-rp 192.168.253.1 192.168.255.5
+      anycast-rp 192.168.253.1 192.168.255.6

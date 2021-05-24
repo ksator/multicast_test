@@ -1,0 +1,6 @@
+Address        Interface  Mode    Neighbor  Hello  DR   DR Address     PktsQed  PktsDropped  
+                                  Count     Intvl  Pri                                       
+172.31.255.2   Ethernet1  sparse  1         30     1    172.31.255.3   0        0            
+172.31.255.6   Ethernet2  sparse  1         30     1    172.31.255.7   0        0            
+172.31.255.10  Ethernet4  sparse  1         30     1    172.31.255.11  0        0            
+172.31.255.14  Ethernet5  sparse  1         30     1    172.31.255.15  0        0

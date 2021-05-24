@@ -1,0 +1,45 @@
+---
+all:
+  children:
+    DC1:
+      children:
+        DC1_FABRIC:
+          children:
+            DC1_SPINES:
+              hosts:
+                DC1-SPINE1:
+                  ansible_port: 4001
+                DC1-SPINE2:
+                  ansible_port: 4002
+            DC1_L3LEAFS:
+              children:
+                DC1_LEAF1:
+                  hosts:
+                    DC1-LEAF1A:
+                      ansible_port: 4005
+                    DC1-LEAF1B:
+                      ansible_port: 4006
+                DC1_LEAF2:
+                  hosts:
+                    DC1-LEAF2A:
+                      ansible_port: 4007
+                    DC1-LEAF2B:
+                      ansible_port: 4008
+            DC1_L2LEAFS:
+              hosts:
+                DC1-L2LEAF1A:
+                  ansible_port: 4017
+                DC1-L2LEAF2A:
+                  ansible_port: 4018
+          vars:
+            ansible_connection: httpapi
+            ansible_httpapi_port: '{{ansible_port}}'
+            ansible_httpapi_host: '{{ ansible_host }}'
+            ansible_httpapi_use_ssl: true
+            ansible_httpapi_validate_certs: false
+            ansible_network_os: eos
+            ansible_user: ansible
+            ansible_ssh_pass: ansible
+            ansible_become: yes
+            ansible_become_method: enable
+            ansible_host: 10.83.29.111

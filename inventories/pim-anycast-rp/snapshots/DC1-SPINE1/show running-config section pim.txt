@@ -1,0 +1,51 @@
+interface Ethernet1
+   description P2P_LINK_TO_DC1-LEAF1A_Ethernet1
+   no switchport
+   ip address 172.31.255.0/31
+   ip ospf dead-interval 8
+   ip ospf hello-interval 2
+   ip ospf network point-to-point
+   ip ospf authentication message-digest
+   ip ospf area 0.0.0.0
+   ip ospf message-digest-key 1 md5 7 lOEmsIwEM8EUA97ure0gCA==
+   pim ipv4 sparse-mode
+!
+interface Ethernet2
+   description P2P_LINK_TO_DC1-LEAF1B_Ethernet1
+   no switchport
+   ip address 172.31.255.4/31
+   ip ospf dead-interval 8
+   ip ospf hello-interval 2
+   ip ospf network point-to-point
+   ip ospf authentication message-digest
+   ip ospf area 0.0.0.0
+   ip ospf message-digest-key 1 md5 7 gwbpeQNlDQr9lCY7YEU/vg==
+   pim ipv4 sparse-mode
+!
+interface Ethernet4
+   description P2P_LINK_TO_DC1-LEAF2A_Ethernet1
+   no switchport
+   ip address 172.31.255.8/31
+   ip ospf dead-interval 8
+   ip ospf hello-interval 2
+   ip ospf network point-to-point
+   ip ospf authentication message-digest
+   ip ospf area 0.0.0.0
+   ip ospf message-digest-key 1 md5 7 7+cINEEGHhuN0P0T0L7t7Q==
+   pim ipv4 sparse-mode
+!
+interface Ethernet5
+   description P2P_LINK_TO_DC1-LEAF2B_Ethernet1
+   no switchport
+   ip address 172.31.255.12/31
+   ip ospf dead-interval 8
+   ip ospf hello-interval 2
+   ip ospf network point-to-point
+   ip ospf authentication message-digest
+   ip ospf area 0.0.0.0
+   ip ospf message-digest-key 1 md5 7 7+cINEEGHhuN0P0T0L7t7Q==
+   pim ipv4 sparse-mode
+!
+router pim sparse-mode
+   ipv4
+      rp address 192.168.253.1

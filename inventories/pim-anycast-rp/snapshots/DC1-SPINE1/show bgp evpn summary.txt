@@ -1,0 +1,8 @@
+BGP summary information for VRF default
+Router identifier 192.168.255.1, local AS number 65000
+Neighbor Status Codes: m - Under maintenance
+  Neighbor         V  AS           MsgRcvd   MsgSent  InQ OutQ  Up/Down State   PfxRcd PfxAcc
+  192.168.255.3    4  65000           1513      1577    0    0 21:06:37 Estab   14     14
+  192.168.255.4    4  65000           1517      1574    0    0 21:06:37 Estab   14     14
+  192.168.255.5    4  65000           1452      1511    0    0 18:01:44 Estab   18     18
+  192.168.255.6    4  65000           1454      1516    0    0 18:01:44 Estab   18     18
