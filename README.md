@@ -1,47 +1,39 @@
+This repository has multicast configuration files and show commands for EOS devices. 
+
 ![anycast_rp.png](anycast_rp.png)
 
+EVPN-VXLAN:
+- Symmetric IRB
+- Underlay: OSPFv2
+- Overlay: iBGP (Lo0)
+- VXLAN: Lo1
+
 2 spines:
-- DC1-SPINE1
-- DC1-SPINE2
+- DC1-SPINE1: RP 192.168.253.1
+- DC1-SPINE2: RP 192.168.253.1
 
 4 leaves:
-- DC1-LEAF1A
-- DC1-LEAF1B
-- DC1-LEAF2A
-- DC1-LEAF2B
-
-evpn-vxlan:
-- Symmetric IRB
-- underlay: ospfv2
-- overlay: ibgp (lo0)
-- vxlan: lo1
+- DC1-LEAF1A: L3 LEAF. no MLAG. Anycast RP 192.168.253.1. Connect the multicast receiver.
+- DC1-LEAF1B: L3 LEAF. no MLAG. Anycast RP 192.168.253.1. Connect the multicast receiver.
+- DC1-LEAF2A: L3 LEAF. MLAG. Anycast RP 192.168.253.1
+- DC1-LEAF2B: L3 LEAF. MLAG. Anycast RP 192.168.253.1
 
 2 hosts:
-- DC1-L2LEAF1A: multicast source
-- DC1-L2LEAF1B: multicast receiver
+- The device DC1-L2LEAF1A is a multicast source
+- The device DC1-L2LEAF1B is a multicast receiver
 
-multicast:
-- pim sparse mode
+Multicast:
+- PIM sparse mode
+- Anycast RP
 - RP is 192.168.253.1
-- anycast RP.
-- 192.168.253.1 is lo2 of:
+- 192.168.253.1 is Lo2 of:
   - DC1-LEAF1A
   - DC1-LEAF1B
   - DC1-LEAF2A
   - DC1-LEAF2B
-- Communication between RP is using lo0 (192.168.255.X)
+- Communication between RP is using Lo0 (192.168.255.X)
 
-DC1-SPINE1: RP 192.168.253.1
-
-DC1-SPINE2: RP 192.168.253.1
-
-DC1-LEAF1A: L3 LEAF. no MLAG. Connect the multicast receiver.
-
-DC1-LEAF1B: L3 LEAF. no MLAG. Connect the multicast source.
-
-DC1-LEAF2A and DC1-LEAF2B: L3 LEAF. MLAG. Anycast RP 192.168.253.1
-
-DC1-L2LEAF1A: host connected to DC1-LEAF1B on VLAN 100. multicast source (iperf)
+DC1-L2LEAF1A is an host connected to DC1-LEAF1B on VLAN 100. It is the multicast source (iperf from bash)
 ```
 DC1-L2LEAF1A#sh lldp neighbors
 
@@ -71,7 +63,7 @@ interface Vlan100
    pim ipv4 sparse-mode
 ```
 
-DC1-L2LEAF2A: host connectd to DC1-LEAF1A on VLAN 90. multicast receiver (iperf)
+DC1-L2LEAF2A is an host connectd to DC1-LEAF1A on VLAN 90. It is a multicast receiver (iperf from bash)
 ```
 DC1-L2LEAF2A#sh lldp neighbors
 Port          Neighbor Device ID            Neighbor Port ID    TTL
@@ -100,7 +92,7 @@ interface Vlan90
    pim ipv4 sparse-mode
 ```
 
-receiver: iperf on DC1-L2LEAF2A
+Receiver: iperf on DC1-L2LEAF2A
 ```
 [arista@DC1-L2LEAF2A ~]$ iperf -s -u -B 226.200.200.200 -i 1 -p 51000
 ------------------------------------------------------------
@@ -124,7 +116,7 @@ UDP buffer size:  208 KByte (default)
 [  3]  0.0- 9.9 sec  1.03 MBytes   871 Kbits/sec   2.835 ms  154/  891 (17%)
 ```
 
-source: iperf on DC1-L2LEAF1A
+Source: iperf on DC1-L2LEAF1A
 ```
 [ansible@DC1-L2LEAF1A ~]$ iperf -c 226.200.200.200 -u -T 32 -i 1 -p 51000
 ------------------------------------------------------------
