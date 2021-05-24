@@ -33,7 +33,8 @@ Multicast:
   - DC1-LEAF2B
 - Communication between RP is using Lo0 (192.168.255.X)
 
-DC1-L2LEAF1A is an host connected to DC1-LEAF1B on VLAN 100. It is the multicast source (iperf from bash)
+Multicast source: 
+- DC1-L2LEAF1A is the multicast source (iPerf from bash)
 ```
 DC1-L2LEAF1A#sh lldp neighbors
 
@@ -50,7 +51,7 @@ interface Ethernet2
 ```
 ip route 0.0.0.0/0 10.100.100.1
 ```
-DC1-LEAF1B
+- It is an host connected to DC1-LEAF1B on VLAN 100
 ```
 interface Ethernet3
    description DC1-L2LEAF1A_Ethernet2
@@ -63,7 +64,8 @@ interface Vlan100
    pim ipv4 sparse-mode
 ```
 
-DC1-L2LEAF2A is an host connectd to DC1-LEAF1A on VLAN 90. It is a multicast receiver (iperf from bash)
+Multicast receiver: 
+- DC1-L2LEAF2A is a multicast receiver (iPerf from bash)
 ```
 DC1-L2LEAF2A#sh lldp neighbors
 Port          Neighbor Device ID            Neighbor Port ID    TTL
@@ -79,7 +81,7 @@ interface Ethernet1
 ```
 ip route 0.0.0.0/0 10.90.90.1
 ```
-DC1-LEAF1A
+- It is an host connected to DC1-LEAF1A on VLAN 90.
 ```
 interface Ethernet4
    description DC1-L2LEAF2A_Ethernet1
@@ -92,7 +94,9 @@ interface Vlan90
    pim ipv4 sparse-mode
 ```
 
-Receiver: iperf on DC1-L2LEAF2A
+Multicast traffic 
+
+- Receiver: iPerf on DC1-L2LEAF2A
 ```
 [arista@DC1-L2LEAF2A ~]$ iperf -s -u -B 226.200.200.200 -i 1 -p 51000
 ------------------------------------------------------------
@@ -116,7 +120,7 @@ UDP buffer size:  208 KByte (default)
 [  3]  0.0- 9.9 sec  1.03 MBytes   871 Kbits/sec   2.835 ms  154/  891 (17%)
 ```
 
-Source: iperf on DC1-L2LEAF1A
+- Source: iPerf on DC1-L2LEAF1A
 ```
 [ansible@DC1-L2LEAF1A ~]$ iperf -c 226.200.200.200 -u -T 32 -i 1 -p 51000
 ------------------------------------------------------------
